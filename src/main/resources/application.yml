@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: NoCode
+server:
+  port: 9415
+  servlet:
+    context-path: /api
+# springdoc-openapi 配置 controller 包的扫描位置
+springdoc:
+  group-configs:
+    - group: 'default'
+      packages-to-scan: com.lxj.nocode.controller
+# knife4j
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
