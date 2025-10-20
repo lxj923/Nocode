@@ -1,10 +1,29 @@
 spring:
   application:
     name: NoCode
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/Nocode
+    username: root
+    password: 12345678
+  # Redis 配置
+  data:
+    redis:
+      database: 1
+      host: 127.0.0.1
+      timeout: 5000
+      port: 6379
+  # Spring Session 配置
+  session:
+    timeout: 2592000             # Session 过期时间（秒）
+
 server:
   port: 9415
   servlet:
     context-path: /api
+    session:
+      cookie:
+        max-age: 2592000
 # springdoc-openapi 配置 controller 包的扫描位置
 springdoc:
   group-configs:
@@ -15,4 +34,14 @@ knife4j:
   enable: true
   setting:
     language: zh_cn
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false  #是否驼峰
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #日志输出
+  global-config:
+    db-config:
+      logic-delete-field: isDelete #逻辑删除作用地方
+      logic-delete-value: 1 #逻辑删除后的值
+      logic-not-delete-value: 0
 
