@@ -8,10 +8,15 @@ import com.lxj.nocode.ai.model.MultiFileCodeResult;
 import com.lxj.nocode.model.enums.CodeGenTypeEnum;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 
+/**
+ * 保存 AI 生成的代码文件
+ */
+@Deprecated
 public class CodeFileSaver {
     // 文件保存根目录
-    private static final String BASE_DIR = "temp/code_output";
+    private static final String BASE_DIR = System.getProperty("user.dir") + "/tmp/code_output";
 
     /**
      * 保存 HtmlCodeResult
@@ -31,6 +36,8 @@ public class CodeFileSaver {
         writeSingleFile(filePath, "index.html", multiFileCodeResult.getHtmlCode());
         writeSingleFile(filePath, "index.js", multiFileCodeResult.getJsCode());
         writeSingleFile(filePath, "index.css", multiFileCodeResult.getCssCode());
+        //	•	一个 文件，如果 path 指向一个文件；
+        //	•	一个 目录，如果 path 指向一个目录；
         return new File(filePath);
     }
 

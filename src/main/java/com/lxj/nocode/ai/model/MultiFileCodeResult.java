@@ -2,7 +2,9 @@ package com.lxj.nocode.ai.model;
 
 import dev.langchain4j.model.output.structured.Description;
 import lombok.Data;
-
+/**
+ * 结构化输出的结果
+ */
 @Description("生成多个代码文件的结果")
 @Data
 public class MultiFileCodeResult {

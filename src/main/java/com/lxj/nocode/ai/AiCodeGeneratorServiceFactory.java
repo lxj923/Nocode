@@ -1,6 +1,7 @@
 package com.lxj.nocode.ai;
 
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.model.chat.StreamingChatModel;
 import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
@@ -16,9 +17,16 @@ public class AiCodeGeneratorServiceFactory {
     @Resource
     private ChatModel chatModel;
 
-    // 注册代码生成器
+    // 流式大模型
+    @Resource
+    private StreamingChatModel streamingChatModel;
+
+    // 注册 AI 服务
     @Bean
     public AiCodeGeneratorService aiCodeGeneratorService() {
-        return AiServices.create(AiCodeGeneratorService.class, chatModel);
+        return AiServices.builder(AiCodeGeneratorService.class)
+                .chatModel(chatModel)
+                .streamingChatModel(streamingChatModel)
+                .build();
     }
 }

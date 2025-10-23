@@ -1,7 +1,7 @@
 package com.lxj.nocode.mapper;
 
-import com.lxj.nocode.model.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.lxj.nocode.model.entity.User;
 
 /**
  * @author lxj
